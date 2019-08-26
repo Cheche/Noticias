@@ -1,12 +1,6 @@
 import { NoticiasService } from './noticias.service';
-import {
-  HttpBackend,
-  HttpClient
-} from '@angular/common/http';
-import {
-  HttpTestingController,
-  HttpClientTestingModule
-} from '@angular/common/http/testing';
+import { HttpBackend, HttpClient } from '@angular/common/http';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed, inject } from '@angular/core/testing';
 
 
@@ -20,6 +14,7 @@ describe('NoticiasService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      declarations: [],
       imports: [HttpClientTestingModule],
       providers: [NoticiasService]
     });
@@ -63,5 +58,22 @@ describe('NoticiasService', () => {
       // expect(req.request.method).toEqual('GET');
     });
   });
+
+
+  describe('initialization vars', () => {
+    it('headlinesPage = 0', () => {
+      expect(service.headlinesPage).toEqual(0);
+    });
+
+    it('categoriaPage = 0', () => {
+      expect(service.categoriaPage).toEqual(0);
+    });
+
+    it('categoriaActual = empty', () => {
+      expect(service.categoriaActual).toEqual('');
+    });
+
+  });
+
 
 });
